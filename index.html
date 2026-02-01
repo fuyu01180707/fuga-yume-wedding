@@ -1,0 +1,510 @@
+﻿<!doctype html>
+<html lang="ja">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <meta name="format-detection" content="telephone=no" />
+  <meta name="color-scheme" content="light" />
+
+  <title>Wedding Invitation | Fuga & Yume</title>
+  <style>
+    html{ background:#f3f2ea; }
+    body{ margin:0; }
+    body.is-loading .scrollPages,
+    body.is-loading .topbar,
+    body.is-loading .stage,
+    body.is-loading .dust,
+    body.is-loading .navOverlay{
+      opacity:0;
+      visibility:hidden;
+    }
+    body.is-loading #loader{
+      opacity:1;
+      visibility:visible;
+    }
+  </style>
+  <noscript>
+    <style>
+      body.is-loading .scrollPages,
+      body.is-loading .topbar,
+      body.is-loading .stage,
+      body.is-loading .dust,
+      body.is-loading .navOverlay{
+        opacity:1;
+        visibility:visible;
+      }
+      body.is-loading #loader{
+        display:none !important;
+      }
+    </style>
+  </noscript>
+  <meta name="description" content="田中楓芽 & 柚芽 結婚式のご案内（Web招待状）" />
+  <meta name="robots" content="noindex,nofollow,noarchive,nosnippet" />
+  <meta name="googlebot" content="noindex,nofollow,noarchive,nosnippet" />
+  <meta property="og:title" content="Wedding Invitation | Fuga & Yume" />
+  <meta property="og:description" content="2026.05.16 Sat / NOTRE DOME YOKOHAMA MINATOMIRAI" />
+  <meta property="og:type" content="website" />
+  <meta property="og:image" content="./assets/images/hero/hero.jpg" />
+
+  <link rel="stylesheet" href="./css/main.css" />
+  <link rel="stylesheet" href="./corser.css" />
+</head>
+
+<body class="is-loading">
+  <!-- Loader -->
+  <div id="loader" class="loader loader--letter" aria-hidden="false">
+    <div class="letterScene" id="letterScene">
+      <div class="envelope" id="letterEnvelope" aria-hidden="true">
+        <div class="envelope__back"></div>
+        <div class="letterPaper">
+          <div class="letterPaper__inner">
+            <div class="letterPreview">
+              <img src="./assets/images/hero/hero.jpg" alt="Wedding Invitation">
+            </div>
+            <p class="letterTitle">Wedding Invitation</p>
+            <span>結婚式のご案内</span>
+          </div>
+        </div>
+        <div class="envelope__front"></div>
+        <div class="envelope__flap"></div>
+      </div>
+      <button class="seal" id="letterSeal" type="button" aria-label="封蝋を割る">
+        <img class="sealImg" src="./assets/images/wax_seal.svg" alt="" aria-hidden="true">
+      </button>
+    </div>
+    <div class="loaderStatus" id="loaderStatus" role="status" aria-live="polite">読み込み中...</div>
+  </div>
+
+  <!-- Custom cursor -->
+  <div class="curzr-ring-dot" aria-hidden="true">
+    <div class="curzr-dot"></div>
+  </div>
+
+  <!-- 背景ステージ（画像が消えない方式：2レイヤークロスフェード） -->
+  <div class="stage" aria-hidden="true">
+    <div class="bg bg--a is-on" id="bgA"></div>
+    <div class="bg bg--b" id="bgB"></div>
+
+    <!-- 紙テクスチャ（あれば使う） -->
+    <div class="paperTex"></div>
+
+    <!-- フィルム粒子（任意：入ってるなら自然に乗る） -->
+    <video class="grain" id="grain" autoplay muted loop playsinline>
+      <source src="./assets/video/grain.mp4" type="video/mp4" />
+    </video>
+
+    <div class="vignette"></div>
+  </div>
+
+  <!-- 微粒子（紙粉） -->
+  <div class="dust" aria-hidden="true"></div>
+
+  <!-- Top bar -->
+  <header class="topbar" id="topbar">
+    <a class="brand" href="#hero" aria-label="トップへ">
+      <img class="brand__logo" src="./assets/images/logo.png" alt="Fuga & Yume">
+    </a>
+
+    <button class="menuBtn" id="menuBtn" aria-label="メニューを開く" aria-controls="navOverlay" aria-expanded="false">
+      <span class="menuBtn__label">Menu</span>
+      <span class="menuBtn__icon" aria-hidden="true">
+        <span></span>
+        <span></span>
+        <span></span>
+      </span>
+    </button>
+  </header>
+
+  <div class="viewToggle" data-view-toggle aria-label="表示切替">
+    <button type="button" data-view="auto" aria-pressed="true">Auto</button>
+    <button type="button" data-view="desktop" aria-pressed="false">Web</button>
+    <button type="button" data-view="mobile" aria-pressed="false">Sp</button>
+  </div>
+
+  <!-- Nav Overlay -->
+  <div class="navOverlay" id="navOverlay" aria-hidden="true">
+    <button class="navOverlay__close" id="navClose" aria-label="メニューを閉じる">Close</button>
+    <nav class="navOverlay__panel" aria-label="ページ内リンク">
+      <a href="#hero">Top</a>
+      <a href="#message">Message</a>
+      <a href="#ourstory">Our Story</a>
+      <a href="#gallery">Gallery</a>
+      <a href="#details">Details</a>
+      <a href="#access">Access</a>
+      <a href="#rsvp">RSVP</a>
+      <a href="#faq">FAQ</a>
+    </nav>
+  </div>
+
+  <!-- Scroll Pages -->
+  <main class="scrollPages" id="scrollPages">
+
+    <!-- 0: Hero（BG=Hero） -->
+    <section class="sp sp--hero" id="hero" data-bg="0">
+      <div class="sheet reveal">
+        <div class="heroMeta">
+          <div class="heroNames">Tanaka Fuga &amp; Yume</div>
+          <div class="heroDate">2026.05.16 Sat</div>
+        </div>
+
+        <div class="heroPoem">
+          <p>結婚式へのご招待状をお届けします</p>
+          <p>皆さまとお会いできる日を楽しみにしています</p>
+        </div>
+
+        <div class="heroActions">
+          <a class="btn btnPrimary btnRsvp" href="#rsvp">RSVP</a>
+        </div>
+
+        <div class="heroHint">下へスクロールしてご覧ください</div>
+      </div>
+    </section>
+
+    <!-- 1: Message（BG=Story01） -->
+    <section class="sp sp--story" id="message" data-bg="1">
+      <div class="sheet reveal">
+        <div class="sectionHead">
+          <h2 class="sectionTitle">Message</h2>
+          <p class="sectionLead">謹啓より、結婚式のご案内を申し上げます。</p>
+        </div>
+
+        <div class="cardFormal">
+          <div class="kinkei">謹啓</div>
+
+          <div class="formalText">
+            <p>皆さまにはますますご清祥のこととお慶び申し上げます。</p>
+            <p>私たちはこのたび結婚式を挙げる運びとなりました。</p>
+            <p>
+              日頃お世話になっている皆さまに見守られながら、ささやかながら心ばかりの席を設けましたので、<br>
+              ご多用中とは存じますが、ぜひご臨席賜りますようお願い申し上げます。
+            </p>
+            <p>当日は、美味しいお食事とお飲み物をご用意して、和やかな時間をお過ごしいただけましたら幸いです。</p>
+          </div>
+
+          <div class="formalSign">
+            <div>敬具</div>
+            <div class="signNames">
+              <div><b>新郎</b>　田中 楓芽（Tanaka Fuga）</div>
+              <div><b>新婦</b>　柚芽（Yume）</div>
+            </div>
+          </div>
+        </div>
+
+
+      </div>
+    </section>
+
+    <!-- 2: Our Story（BG=Story02） -->
+    <section class="sp sp--story" id="ourstory" data-bg="2">
+      <div class="sheet reveal">
+        <div class="sectionHead">
+          <h2 class="sectionTitle">Our Story</h2>
+
+        </div>
+
+        <!-- ✅ 参考画像風：インフォグラフィックカード -->
+        <div class="lsCard" aria-label="Our Story">
+          <div class="lsTop">
+            <div class="lsTop__small">OUR STORY</div>
+            <div class="lsTop__script" aria-hidden="true"></div>
+            <div class="lsTop__names">FUGA &amp; YUME</div>
+            <div class="lsTop__sub">ARE GETTING MARRIED!</div>
+          </div>
+
+          <div class="lsHr"></div>
+
+          <!-- Row 1 : Birth -->
+          <div class="lsRow lsRow--pair">
+            <div class="lsItem">
+              <div class="lsYear">1998</div>
+              <div class="lsText">
+                <div class="lsText__title">FUGA WAS BORN</div>
+                <div class="lsText__sub">1998.11.06</div>
+              </div>
+            </div>
+
+            <div class="lsMid">
+              <div class="lsIcon" aria-hidden="true">
+                <!-- suit icon -->
+                <svg viewBox="0 0 64 64" role="img" aria-hidden="true">
+                  <path d="M24 10l8 6 8-6 6 10-8 8v26H26V28l-8-8 6-10z" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linejoin="round"/>
+                  <path d="M32 16v38" fill="none" stroke="currentColor" stroke-width="2.2"/>
+                </svg>
+              </div>
+              <div class="lsVline" aria-hidden="true"></div>
+              <div class="lsIcon" aria-hidden="true">
+                <!-- dress icon -->
+                <svg viewBox="0 0 64 64" role="img" aria-hidden="true">
+                  <path d="M32 10c3 0 6 3 6 6 0 2-1 4-3 5l7 10 6 22H16l6-22 7-10c-2-1-3-3-3-5 0-3 3-6 6-6z"
+                    fill="none" stroke="currentColor" stroke-width="2.2" stroke-linejoin="round"/>
+                </svg>
+              </div>
+            </div>
+
+            <div class="lsItem">
+              <div class="lsYear">1999</div>
+              <div class="lsText">
+                <div class="lsText__title">YUME WAS BORN</div>
+                <div class="lsText__sub">1999.04.18</div>
+              </div>
+            </div>
+          </div>
+
+          <div class="lsHr"></div>
+
+          <!-- Row 2 : Dating / Proposal -->
+          <div class="lsRow lsRow--split">
+            <div class="lsSplit">
+              <div class="lsBadge">
+                <span class="lsBadge__icon">♡</span>
+                <span class="lsBadge__label">THEY STARTED DATING</span>
+              </div>
+              <div class="lsDate">2021.01.18</div>
+              <div class="lsDesc">ふたりの物語が、ゆっくり始まった日。</div>
+            </div>
+
+            <div class="lsDivider" aria-hidden="true"></div>
+
+            <div class="lsSplit">
+              <div class="lsBadge">
+                <span class="lsBadge__icon">💍</span>
+                <span class="lsBadge__label">THE PROPOSAL</span>
+              </div>
+              <div class="lsDate">2025.01.04</div>
+              <div class="lsDesc">「これからも一緒に」— そう決めた大切な日。</div>
+            </div>
+          </div>
+
+          <div class="lsHr"></div>
+
+          <!-- Row 3 : Marriage / Wedding -->
+          <div class="lsRow lsRow--split">
+            <div class="lsSplit">
+              <div class="lsBadge">
+                <span class="lsBadge__icon">✦</span>
+                <span class="lsBadge__label">MARRIAGE REGISTRATION</span>
+              </div>
+              <div class="lsDate">
+                2025.07.07 <span class="lsJP">(令和7年7月7日)</span>
+              </div>
+              <div class="lsDesc">新しい家族として、同じ未来へ。</div>
+            </div>
+
+            <div class="lsDivider" aria-hidden="true"></div>
+
+            <div class="lsSplit">
+              <div class="lsBadge">
+                <span class="lsBadge__icon">✶</span>
+                <span class="lsBadge__label">WEDDING DAY</span>
+              </div>
+              <div class="lsDate">2026.05.16</div>
+              <div class="lsDesc">皆さまと一緒に迎える特別な一日。</div>
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </section>
+
+    <!-- 3: RSVP -->
+    <section class="sp sp--content" id="rsvp" data-bg="3">
+      <div class="sheet reveal">
+        <div class="sectionHead">
+          <h2 class="sectionTitle">RSVP</h2>
+          <p class="sectionLead">ご出席のご回答は 2026年3月22日までにお願いいたします。</p>
+        </div>
+
+        <div class="grid2 simpleGrid">
+          <div class="card">
+            <h3>回答フォーム</h3>
+            <p class="muted">ボタンからフォームを開いてご回答ください。</p>
+            <div class="btnRow">
+              <a class="btn btnPrimary" target="_blank" rel="noopener"
+                 href="https://forms.gle/UtgVfrxoy5vyz7YJA">
+                フォームを開く
+              </a>
+            </div>
+          </div>
+
+          <div class="card">
+            <h3>フォームをここで入力</h3>
+            <div class="formEmbed">
+              <iframe
+                title="RSVP Google Form"
+                loading="lazy"
+                src="https://forms.gle/UtgVfrxoy5vyz7YJA"></iframe>
+            </div>
+          </div>
+        </div>
+
+        <p class="mutedSmall" style="margin-top:12px;">
+          ※期限までにご回答いただけますと幸いです。
+        </p>
+      </div>
+    </section>
+    <!-- 4: Gallery（ここからシンプル背景） -->
+    <section class="sp sp--content" id="gallery" data-bg="4">
+      <div class="sheet reveal">
+        <div class="sectionHead">
+          <h2 class="sectionTitle">Gallery</h2>
+
+        </div>
+
+        <div class="coverflow" data-coverflow>
+          <div class="coverflow-stage" aria-live="polite">
+            <!-- ✅ ギャラリー画像は assets/images/gallery/ に分離 -->
+            <article class="cf-card" data-cf-card><img src="./assets/images/gallery/01.jpg" alt="Photo 01" loading="lazy" decoding="async"></article>
+            <article class="cf-card" data-cf-card><img src="./assets/images/gallery/02.jpg" alt="Photo 02" loading="lazy" decoding="async"></article>
+            <article class="cf-card" data-cf-card><img src="./assets/images/gallery/03.jpg" alt="Photo 03" loading="lazy" decoding="async"></article>
+            <article class="cf-card" data-cf-card><img src="./assets/images/gallery/04.jpg" alt="Photo 04" loading="lazy" decoding="async"></article>
+            <article class="cf-card" data-cf-card><img src="./assets/images/gallery/05.jpg" alt="Photo 05" loading="lazy" decoding="async"></article>
+            <article class="cf-card" data-cf-card><img src="./assets/images/gallery/06.jpg" alt="Photo 06" loading="lazy" decoding="async"></article>
+          </div>
+
+          <div class="cf-controls">
+            <button class="btn" type="button" data-cf-prev aria-label="前の写真">Prev</button>
+            <button class="btn" type="button" data-cf-next aria-label="次の写真">Next</button>
+          </div>
+
+
+        </div>
+      </div>
+    </section>
+
+    <!-- 5: Details -->
+    <section class="sp sp--content" id="details" data-bg="5">
+      <div class="sheet reveal">
+        <div class="sectionHead">
+          <h2 class="sectionTitle">Details</h2>
+          <p class="sectionLead">当日は、受付後ラウンジでお待ちください。</p>
+
+        </div>
+
+        <div class="grid2 simpleGrid">
+          <div class="card">
+            <h3>Schedule</h3>
+            <ul class="list">
+              <li><span>受付</span><b>12:30〜13:00</b></li>
+              <li><span>挙式</span><b>13:30〜</b></li>
+              <li><span>披露宴</span><b>14:30〜</b></li>
+              <li><span>お開き（予定）</span><b>16:50頃</b></li>
+            </ul>
+            <p class="muted">開始直前は混み合いますので、余裕をもってお越しください。</p>
+          </div>
+
+          <div class="card">
+            <h3>Notes</h3>
+            <ul class="bullets">
+              <li>写真撮影・SNS投稿は大歓迎です。</li>
+              <li>お子様連れでのご参加も可能です。</li>
+              <li>二次会は後日ご案内します（このWebは随時更新します）。</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- 6: Access -->
+    <section class="sp sp--content" id="access" data-bg="6">
+      <div class="sheet reveal">
+        <div class="sectionHead">
+          <h2 class="sectionTitle">Access</h2>
+          <p class="sectionLead">会場：NOTRE DOME YOKOHAMA MINATOMIRAI</p>
+        </div>
+
+        <div class="grid2 simpleGrid">
+          <div class="card">
+            <h3>Venue</h3>
+            <p class="venue">
+              〒231-0003<br>
+              神奈川県横浜市中区北仲通6丁目101番
+            </p>
+            <p class="venue">
+              FREE CALL：0120-54-3311<br>
+              CALL：045-228-7756
+            </p>
+
+            <div class="btnRow">
+              <a class="btn btnPrimary" target="_blank" rel="noopener"
+                 href="https://www.google.com/maps/place/%E3%80%92231-0003+%E7%A5%9E%E5%A5%88%E5%B7%9D%E7%9C%8C%E6%A8%AA%E6%B5%9C%E5%B8%82%E4%B8%AD%E5%8C%BA%E5%8C%97%E4%BB%B2%E9%80%9A%EF%BC%96%E4%B8%81%E7%9B%AE%EF%BC%91%EF%BC%90%EF%BC%91/@35.451954,139.635538,17z">
+                Google Maps
+              </a>
+              <a class="btn" target="_blank" rel="noopener"
+                 href="https://www.google.com/maps/dir/?api=1&destination=NOTRE%20DOME%20YOKOHAMA%20MINATOMIRAI">
+                経路を開く
+              </a>
+            </div>
+
+            <h4 class="subhead">Public Transport</h4>
+            <ul class="bullets">
+              <li>みなとみらい線「馬車道」駅 2B出口より徒歩3分</li>
+              <li>JR「桜木町」駅 南改札東口より徒歩7分／市営地下鉄「桜木町」駅 北1口より徒歩9分</li>
+            </ul>
+
+            <p class="muted">
+              当日のご連絡は新郎新婦までお願いいたします（連絡先は別途ご案内）。
+            </p>
+          </div>
+
+          <div class="card">
+            <h3>Map</h3>
+            <div class="mapEmbed">
+              <iframe
+                title="NOTRE DOME YOKOHAMA MINATOMIRAI map"
+                loading="lazy"
+                referrerpolicy="no-referrer-when-downgrade"
+                src="https://www.google.com/maps?q=NOTRE%20DOME%20YOKOHAMA%20MINATOMIRAI&output=embed"></iframe>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- 7: FAQ -->
+    <section class="sp sp--content" id="faq" data-bg="7">
+      <div class="sheet reveal">
+        <div class="sectionHead">
+          <h2 class="sectionTitle">FAQ</h2>
+          <p class="sectionLead">よくいただく質問をまとめました。</p>
+        </div>
+
+        <div class="faq">
+          <details>
+            <summary>子ども連れでも大丈夫？</summary>
+            <div class="faqBody">
+              <p>お子様連れでのご参加も可能です。</p>
+            </div>
+          </details>
+
+          <details>
+            <summary>写真撮影やSNS投稿は？</summary>
+            <div class="faqBody">
+              <p>写真撮影・SNS投稿は大歓迎です。</p>
+            </div>
+          </details>
+
+          <details>
+            <summary>二次会はある？</summary>
+            <div class="faqBody">
+              <p>二次会については後日更新予定です。</p>
+            </div>
+          </details>
+        </div>
+
+        <footer class="siteFooter">
+          <div class="footerRow">
+            <div class="footerSmall">Tanaka Fuga &amp; Yume</div>
+            <a class="footerTop" href="#hero">Back to Top</a>
+          </div>
+        </footer>
+      </div>
+    </section>
+
+  </main>
+
+  <script src="./corser.js" defer></script>
+  <script src="./js/main.js" defer></script>
+</body>
+</html>
+
+
