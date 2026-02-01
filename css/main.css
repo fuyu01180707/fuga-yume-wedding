@@ -763,10 +763,13 @@ body{
   .sp{
     padding: clamp(64px, 8vh, 96px) 4.5vw;
   }
+  body{
+    font-size: 15px;
+  }
   .sheet{
     width: 100%;
-    padding: 18px;
-    border-radius: 24px;
+    padding: 16px;
+    border-radius: 22px;
   }
   .heroMeta{
     flex-direction: column;
@@ -775,6 +778,39 @@ body{
   .sectionHead{ margin-bottom: 14px; }
   .heroActions{ margin-top: 12px; }
   .heroHint{ margin-top: 10px; }
+  .sectionTitle{
+    font-size: clamp(26px, 7.2vw, 36px);
+  }
+  .sectionTitle::after{
+    width: 46px;
+    height: 5px;
+  }
+  .heroPoem p{
+    font-size: clamp(16px, 4.6vw, 18px);
+  }
+  .sectionLead{
+    font-size: 14px;
+  }
+  .cardFormal,
+  .simpleGrid .card,
+  .lsCard{
+    padding: 16px;
+  }
+  .list li{ padding: 8px 0; }
+  .bullets{ line-height: 1.75; }
+  .btn{
+    padding: 10px 14px;
+    font-size: 12px;
+  }
+  .btnRsvp{
+    padding: 10px 18px;
+  }
+  .coverflow-stage{
+    height: min(440px, 54vh);
+  }
+  .cf-card{
+    height: min(360px, 48vh);
+  }
 }
 
 /* Hero */
@@ -1654,10 +1690,13 @@ html[data-view="desktop"] .messagePhoto img{ height: 220px; }
 html[data-view="mobile"] .sp{
   padding: clamp(64px, 8vh, 96px) 4.5vw;
 }
+html[data-view="mobile"] body{
+  font-size: 15px;
+}
 html[data-view="mobile"] .sheet{
   width: 100%;
-  padding: 18px;
-  border-radius: 24px;
+  padding: 16px;
+  border-radius: 22px;
 }
 html[data-view="mobile"] .heroMeta{
   flex-direction: column;
@@ -1666,6 +1705,39 @@ html[data-view="mobile"] .heroMeta{
 html[data-view="mobile"] .sectionHead{ margin-bottom: 14px; }
 html[data-view="mobile"] .heroActions{ margin-top: 12px; }
 html[data-view="mobile"] .heroHint{ margin-top: 10px; }
+html[data-view="mobile"] .sectionTitle{
+  font-size: clamp(26px, 7.2vw, 36px);
+}
+html[data-view="mobile"] .sectionTitle::after{
+  width: 46px;
+  height: 5px;
+}
+html[data-view="mobile"] .heroPoem p{
+  font-size: clamp(16px, 4.6vw, 18px);
+}
+html[data-view="mobile"] .sectionLead{
+  font-size: 14px;
+}
+html[data-view="mobile"] .cardFormal,
+html[data-view="mobile"] .simpleGrid .card,
+html[data-view="mobile"] .lsCard{
+  padding: 16px;
+}
+html[data-view="mobile"] .list li{ padding: 8px 0; }
+html[data-view="mobile"] .bullets{ line-height: 1.75; }
+html[data-view="mobile"] .btn{
+  padding: 10px 14px;
+  font-size: 12px;
+}
+html[data-view="mobile"] .btnRsvp{
+  padding: 10px 18px;
+}
+html[data-view="mobile"] .coverflow-stage{
+  height: min(440px, 54vh);
+}
+html[data-view="mobile"] .cf-card{
+  height: min(360px, 48vh);
+}
 
 html[data-view="mobile"] .grid2{ grid-template-columns: 1fr; }
 html[data-view="desktop"] .grid2{ grid-template-columns: 1fr 1fr; }
