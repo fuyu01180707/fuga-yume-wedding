@@ -598,7 +598,7 @@ body{
   z-index: 11;
   display: inline-flex;
   gap: 6px;
-  padding: 6px;
+  padding: 4px;
   border-radius: 999px;
   background: rgba(255,255,255,.78);
   border: 1px solid rgba(46,61,27,.18);
@@ -608,11 +608,11 @@ body{
 }
 .viewToggle button{
   border: 0;
-  padding: 6px 10px;
+  padding: 4px 8px;
   border-radius: 999px;
   background: transparent;
   color: var(--muted);
-  font-size: 10px;
+  font-size: 9px;
   letter-spacing: .18em;
   text-transform: uppercase;
   font-weight: 700;
@@ -625,7 +625,7 @@ body{
   box-shadow: 0 6px 16px rgba(10,12,10,.12);
 }
 @media (max-width:700px){
-  .viewToggle{ top: 84px; }
+  .viewToggle{ top: 80px; }
 }
 
 /* ========= NavOverlay ========= */
@@ -757,6 +757,24 @@ body{
   border-radius: 24px;
   border: 1px solid rgba(140,120,90,.12);
   pointer-events: none;
+}
+
+@media (max-width:700px){
+  .sp{
+    padding: clamp(64px, 8vh, 96px) 4.5vw;
+  }
+  .sheet{
+    width: 100%;
+    padding: 18px;
+    border-radius: 24px;
+  }
+  .heroMeta{
+    flex-direction: column;
+    align-items: flex-start;
+  }
+  .sectionHead{ margin-bottom: 14px; }
+  .heroActions{ margin-top: 12px; }
+  .heroHint{ margin-top: 10px; }
 }
 
 /* Hero */
@@ -1632,6 +1650,22 @@ html[data-view="mobile"] .messageGallery{ grid-template-columns: 1fr; }
 html[data-view="desktop"] .messageGallery{ grid-template-columns: repeat(2, minmax(0, 1fr)); }
 html[data-view="mobile"] .messagePhoto img{ height: 200px; }
 html[data-view="desktop"] .messagePhoto img{ height: 220px; }
+
+html[data-view="mobile"] .sp{
+  padding: clamp(64px, 8vh, 96px) 4.5vw;
+}
+html[data-view="mobile"] .sheet{
+  width: 100%;
+  padding: 18px;
+  border-radius: 24px;
+}
+html[data-view="mobile"] .heroMeta{
+  flex-direction: column;
+  align-items: flex-start;
+}
+html[data-view="mobile"] .sectionHead{ margin-bottom: 14px; }
+html[data-view="mobile"] .heroActions{ margin-top: 12px; }
+html[data-view="mobile"] .heroHint{ margin-top: 10px; }
 
 html[data-view="mobile"] .grid2{ grid-template-columns: 1fr; }
 html[data-view="desktop"] .grid2{ grid-template-columns: 1fr 1fr; }
