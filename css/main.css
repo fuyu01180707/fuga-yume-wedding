@@ -1664,9 +1664,17 @@ body{
 
 /* ========= View mode overrides ========= */
 @media (max-width: 900px){
-  .bg.is-on::after{ opacity: .28; }
+  .bg{ inset: 0; transform: scale(1.02); }
+  .bg.is-on{
+    filter: blur(1px) saturate(1.02) contrast(1.01);
+  }
+  .bg.is-on::after{ opacity: 0; }
 }
-html[data-view="mobile"] .bg.is-on::after{ opacity: .28; }
+html[data-view="mobile"] .bg{ inset: 0; transform: scale(1.02); }
+html[data-view="mobile"] .bg.is-on{
+  filter: blur(1px) saturate(1.02) contrast(1.01);
+}
+html[data-view="mobile"] .bg.is-on::after{ opacity: 0; }
 html[data-view="desktop"] .bg.is-on::after{ opacity: 0; }
 
 html[data-view="mobile"] .seal{
