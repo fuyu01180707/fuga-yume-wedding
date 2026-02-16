@@ -107,21 +107,29 @@
       <img class="brand__logo" src="./assets/images/logo.png" alt="Fuga & Yume">
     </a>
 
-    <button class="menuBtn" id="menuBtn" aria-label="メニューを開く" aria-controls="navOverlay" aria-expanded="false">
-      <span class="menuBtn__label">Menu</span>
-      <span class="menuBtn__icon" aria-hidden="true">
-        <span></span>
-        <span></span>
-        <span></span>
-      </span>
-    </button>
-  </header>
+    <div class="topbar__actions">
+      <div class="viewToggle" data-view-toggle>
+        <button class="viewToggle__btn" type="button" aria-label="表示切替" aria-expanded="false"
+                aria-controls="viewToggleMenu" aria-haspopup="true" data-view-toggle-btn>
+          View
+        </button>
+        <div class="viewToggle__menu" id="viewToggleMenu" role="menu" aria-label="表示切替" data-view-toggle-menu>
+          <button type="button" data-view="auto" aria-pressed="true">Auto</button>
+          <button type="button" data-view="desktop" aria-pressed="false">Web</button>
+          <button type="button" data-view="mobile" aria-pressed="false">Sp</button>
+        </div>
+      </div>
 
-  <div class="viewToggle" data-view-toggle aria-label="表示切替">
-    <button type="button" data-view="auto" aria-pressed="true">Auto</button>
-    <button type="button" data-view="desktop" aria-pressed="false">Web</button>
-    <button type="button" data-view="mobile" aria-pressed="false">Sp</button>
-  </div>
+      <button class="menuBtn" id="menuBtn" aria-label="メニューを開く" aria-controls="navOverlay" aria-expanded="false">
+        <span class="menuBtn__label">Menu</span>
+        <span class="menuBtn__icon" aria-hidden="true">
+          <span></span>
+          <span></span>
+          <span></span>
+        </span>
+      </button>
+    </div>
+  </header>
 
   <!-- Nav Overlay -->
   <div class="navOverlay" id="navOverlay" aria-hidden="true">
@@ -167,20 +175,20 @@
       <div class="sheet reveal">
         <div class="sectionHead">
           <h2 class="sectionTitle">Message</h2>
-          <p class="sectionLead">謹啓より、結婚式のご案内を申し上げます。</p>
+          <p class="sectionLead">謹啓より結婚式のご案内を申し上げます</p>
         </div>
 
         <div class="cardFormal">
           <div class="kinkei">謹啓</div>
 
           <div class="formalText">
-            <p>皆さまにはますますご清祥のこととお慶び申し上げます。</p>
-            <p>私たちはこのたび結婚式を挙げる運びとなりました。</p>
+            <p>皆さまにはますますご清祥のこととお慶び申し上げます</p>
+            <p>私たちはこのたび結婚式を挙げる運びとなりました</p>
             <p>
-              日頃お世話になっている皆さまに見守られながら、ささやかながら心ばかりの席を設けましたので、<br>
-              ご多用中とは存じますが、ぜひご臨席賜りますようお願い申し上げます。
+              日頃お世話になっている皆さまに見守られながらささやかながら心ばかりの席を設けましたので<br>
+              ご多用中とは存じますがぜひご臨席賜りますようお願い申し上げます
             </p>
-            <p>当日は、美味しいお食事とお飲み物をご用意して、和やかな時間をお過ごしいただけましたら幸いです。</p>
+            <p>当日は美味しいお食事とお飲み物をご用意して和やかな時間をお過ごしいただけましたら幸いです</p>
           </div>
 
           <div class="formalSign">
@@ -262,7 +270,7 @@
                 <span class="lsBadge__label">THEY STARTED DATING</span>
               </div>
               <div class="lsDate">2021.01.18</div>
-              <div class="lsDesc">ふたりの物語が、ゆっくり始まった日。</div>
+              <div class="lsDesc">ふたりの物語がゆっくり始まった日</div>
             </div>
 
             <div class="lsDivider" aria-hidden="true"></div>
@@ -273,7 +281,7 @@
                 <span class="lsBadge__label">THE PROPOSAL</span>
               </div>
               <div class="lsDate">2025.01.04</div>
-              <div class="lsDesc">「これからも一緒に」— そう決めた大切な日。</div>
+              <div class="lsDesc">「これからも一緒に」— そう決めた大切な日</div>
             </div>
           </div>
 
@@ -289,7 +297,7 @@
               <div class="lsDate">
                 2025.07.07 <span class="lsJP">(令和7年7月7日)</span>
               </div>
-              <div class="lsDesc">新しい家族として、同じ未来へ。</div>
+              <div class="lsDesc">新しい家族として同じ未来へ</div>
             </div>
 
             <div class="lsDivider" aria-hidden="true"></div>
@@ -300,7 +308,7 @@
                 <span class="lsBadge__label">WEDDING DAY</span>
               </div>
               <div class="lsDate">2026.05.16</div>
-              <div class="lsDesc">皆さまと一緒に迎える特別な一日。</div>
+              <div class="lsDesc">皆さまと一緒に迎える特別な一日</div>
             </div>
           </div>
         </div>
@@ -313,13 +321,13 @@
       <div class="sheet reveal">
         <div class="sectionHead">
           <h2 class="sectionTitle">RSVP</h2>
-          <p class="sectionLead">ご出席のご回答は 2026年3月22日までにお願いいたします。</p>
+          <p class="sectionLead">ご出席のご回答は<br class="sp-only">2026年3月22日までにお願いいたします</p>
         </div>
 
         <div class="grid2 simpleGrid">
           <div class="card">
             <h3>回答フォーム</h3>
-            <p class="muted">ボタンからフォームを開いてご回答ください。</p>
+            <p class="muted">ボタンからフォームを開いてご回答ください</p>
             <div class="btnRow">
               <a class="btn btnPrimary" target="_blank" rel="noopener"
                  href="https://forms.gle/UtgVfrxoy5vyz7YJA">
@@ -328,7 +336,7 @@
             </div>
           </div>
 
-          <div class="card">
+          <div class="card rsvpEmbed">
             <h3>フォームをここで入力</h3>
             <div class="formEmbed">
               <iframe
@@ -340,7 +348,7 @@
         </div>
 
         <p class="mutedSmall" style="margin-top:12px;">
-          ※期限までにご回答いただけますと幸いです。
+          ※期限までにご回答いただけますと幸いです
         </p>
       </div>
     </section>
@@ -378,7 +386,7 @@
       <div class="sheet reveal">
         <div class="sectionHead">
           <h2 class="sectionTitle">Details</h2>
-          <p class="sectionLead">当日は、受付後ラウンジでお待ちください。</p>
+          <p class="sectionLead">当日は受付後ラウンジでお待ちください</p>
 
         </div>
 
@@ -391,15 +399,15 @@
               <li><span>披露宴</span><b>14:30〜</b></li>
               <li><span>お開き（予定）</span><b>16:50頃</b></li>
             </ul>
-            <p class="muted">開始直前は混み合いますので、余裕をもってお越しください。</p>
+            <p class="muted">尚ご多用中恐縮に存じますが挙式にもご列席賜りたく<br class="sp-only">当日13時までにお越しくださいますようお願い申し上げます</p>
           </div>
 
           <div class="card">
             <h3>Notes</h3>
             <ul class="bullets">
-              <li>写真撮影・SNS投稿は大歓迎です。</li>
-              <li>お子様連れでのご参加も可能です。</li>
-              <li>二次会は後日ご案内します（このWebは随時更新します）。</li>
+              <li>写真撮影・SNS投稿は大歓迎です</li>
+              <li>お子様連れでのご参加も可能です</li>
+              <li>二次会は後日ご案内します（このWebは随時更新します）</li>
             </ul>
           </div>
         </div>
@@ -411,7 +419,7 @@
       <div class="sheet reveal">
         <div class="sectionHead">
           <h2 class="sectionTitle">Access</h2>
-          <p class="sectionLead">会場：NOTRE DOME YOKOHAMA MINATOMIRAI</p>
+          <p class="sectionLead">会場：<br class="sp-only">NOTRE DOME YOKOHAMA MINATOMIRAI</p>
         </div>
 
         <div class="grid2 simpleGrid">
@@ -444,7 +452,7 @@
             </ul>
 
             <p class="muted">
-              当日のご連絡は新郎新婦までお願いいたします（連絡先は別途ご案内）。
+              当日のご連絡は新郎新婦までお願いいたします（連絡先は別途ご案内）
             </p>
           </div>
 
@@ -467,28 +475,28 @@
       <div class="sheet reveal">
         <div class="sectionHead">
           <h2 class="sectionTitle">FAQ</h2>
-          <p class="sectionLead">よくいただく質問をまとめました。</p>
+          <p class="sectionLead">よくいただく質問をまとめました</p>
         </div>
 
         <div class="faq">
           <details>
             <summary>子ども連れでも大丈夫？</summary>
             <div class="faqBody">
-              <p>お子様連れでのご参加も可能です。</p>
+              <p>お子様連れでのご参加も可能です</p>
             </div>
           </details>
 
           <details>
             <summary>写真撮影やSNS投稿は？</summary>
             <div class="faqBody">
-              <p>写真撮影・SNS投稿は大歓迎です。</p>
+              <p>写真撮影・SNS投稿は大歓迎です</p>
             </div>
           </details>
 
           <details>
             <summary>二次会はある？</summary>
             <div class="faqBody">
-              <p>二次会については後日更新予定です。</p>
+              <p>二次会については後日更新予定です</p>
             </div>
           </details>
         </div>
@@ -508,5 +516,6 @@
   <script src="./js/main.js" defer></script>
 </body>
 </html>
+
 
 
