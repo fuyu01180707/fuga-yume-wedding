@@ -146,7 +146,7 @@ body{
   background:
     linear-gradient(180deg, rgba(255,255,255,.22) 0%, rgba(255,255,255,0) 55%),
     linear-gradient(165deg, #e1d8c9 0%, #d5ccb9 52%, #cdc3b1 100%);
-  clip-path: polygon(0 72%, 50% 86%, 100% 72%, 100% 100%, 0 100%);
+  clip-path: polygon(0 70%, 50% 84%, 100% 70%, 100% 100%, 0 100%);
   border: 1px solid rgba(0,0,0,.06);
   box-shadow: 0 8px 18px rgba(0,0,0,.08);
   z-index: 3;
@@ -166,7 +166,7 @@ body{
   position:absolute;
   left:10%;
   right:10%;
-  top:74%;
+  top:70%;
   height:1px;
   background: linear-gradient(90deg, transparent, rgba(0,0,0,.10), transparent);
 }
@@ -484,6 +484,12 @@ body{
   pointer-events:none;
 }
 .brand{ pointer-events:auto; display:flex; align-items:center; }
+.topbar__actions{
+  pointer-events:auto;
+  display:flex;
+  align-items:center;
+  gap:8px;
+}
 .brand__logo{
   height: 66px;
   width:auto;
@@ -592,23 +598,74 @@ body{
 
 /* View toggle */
 .viewToggle{
-  position: fixed;
-  right: 14px;
-  top: 92px;
-  z-index: 11;
-  display: inline-flex;
-  gap: 6px;
-  padding: 4px;
-  border-radius: 999px;
-  background: rgba(255,255,255,.78);
-  border: 1px solid rgba(46,61,27,.18);
-  box-shadow: 0 12px 36px rgba(10,12,10,.12);
-  backdrop-filter: blur(10px);
+  position: relative;
   pointer-events: auto;
 }
-.viewToggle button{
+.viewToggle__btn{
   border: 0;
-  padding: 4px 8px;
+  padding: 8px 12px;
+  border-radius: 999px;
+  background: rgba(255,255,255,.78);
+  color: var(--ink);
+  box-shadow: 0 12px 36px rgba(10,12,10,.12);
+  border:1px solid rgba(46,61,27,.18);
+  cursor:pointer;
+  backdrop-filter: blur(10px);
+  font-size:10px;
+  letter-spacing:.22em;
+  text-transform: uppercase;
+  font-weight: 700;
+  font-family: "Noto Sans JP","Hiragino Sans","Segoe UI",sans-serif;
+  display:inline-flex;
+  align-items:center;
+  gap:6px;
+  position:relative;
+  transition: transform .25s ease, box-shadow .25s ease, border-color .25s ease, background .25s ease;
+}
+.viewToggle__btn::after{
+  content:"";
+  width:6px;
+  height:6px;
+  border-right:2px solid var(--ink);
+  border-bottom:2px solid var(--ink);
+  transform: rotate(45deg);
+  opacity:.6;
+  margin-left: 4px;
+  transition: transform .25s ease, opacity .25s ease;
+}
+.viewToggle__btn:hover,
+.viewToggle__btn:focus-visible{
+  transform: translateY(-1px);
+  box-shadow: 0 16px 40px rgba(10,12,10,.16);
+  border-color: rgba(46,61,27,.28);
+}
+.viewToggle.is-open .viewToggle__btn::after{
+  transform: rotate(-135deg);
+  opacity:.8;
+}
+.viewToggle__menu{
+  position:absolute;
+  right:0;
+  top: calc(100% + 8px);
+  display:flex;
+  flex-direction:column;
+  gap:6px;
+  padding:6px;
+  border-radius:14px;
+  background: rgba(255,255,255,.86);
+  border: 1px solid rgba(46,61,27,.18);
+  box-shadow: 0 16px 40px rgba(10,12,10,.12);
+  backdrop-filter: blur(12px);
+  min-width: 92px;
+  opacity:0;
+  transform: translateY(-6px);
+  pointer-events:none;
+  transition: opacity .25s ease, transform .25s ease;
+  z-index:12;
+}
+.viewToggle__menu button{
+  border: 0;
+  padding: 6px 10px;
   border-radius: 999px;
   background: transparent;
   color: var(--muted);
@@ -617,15 +674,22 @@ body{
   text-transform: uppercase;
   font-weight: 700;
   cursor: pointer;
+  width: 100%;
   transition: transform .2s ease, color .2s ease, background .2s ease, box-shadow .2s ease;
 }
-.viewToggle button.is-active{
+.viewToggle__menu button.is-active{
   background: rgba(143,172,94,.18);
   color: var(--ink);
   box-shadow: 0 6px 16px rgba(10,12,10,.12);
 }
+.viewToggle.is-open .viewToggle__menu{
+  opacity:1;
+  transform: translateY(0);
+  pointer-events:auto;
+}
 @media (max-width:700px){
-  .viewToggle{ top: 80px; }
+  .viewToggle__btn{ padding: 7px 10px; font-size: 9px; }
+  .viewToggle__menu{ min-width: 86px; }
 }
 
 /* ========= NavOverlay ========= */
@@ -768,14 +832,21 @@ body{
   }
   .sheet{
     width: 100%;
-    padding: 16px;
-    border-radius: 22px;
+    padding: 20px;
+    border-radius: 24px;
+  }
+  .sheet::after{
+    inset: 10px;
+    border-radius: 18px;
   }
   .heroMeta{
     flex-direction: column;
     align-items: flex-start;
   }
-  .sectionHead{ margin-bottom: 14px; }
+  .sectionHead{
+    margin-bottom: 14px;
+    padding-top: 4px;
+  }
   .heroActions{ margin-top: 12px; }
   .heroHint{ margin-top: 10px; }
   .sectionTitle{
@@ -1021,6 +1092,23 @@ body{
 @media (max-width: 900px){
   .grid2{ grid-template-columns: 1fr; }
 }
+
+.sp-only{
+  display:none;
+}
+@media (max-width: 700px){
+  .sp-only{ display:inline; }
+}
+html[data-view="mobile"] .sp-only{ display:inline; }
+html[data-view="desktop"] .sp-only{ display:none; }
+
+.rsvpEmbed{
+  display:block;
+}
+@media (max-width: 700px){
+  .rsvpEmbed{ display:none; }
+}
+html[data-view="mobile"] .rsvpEmbed{ display:none; }
 
 /* Profile */
 .profileCard{
@@ -1689,6 +1777,8 @@ html[data-view="desktop"] .seal{
 }
 html[data-view="mobile"] .brand__logo{ height: 56px; }
 html[data-view="desktop"] .brand__logo{ height: 66px; }
+html[data-view="mobile"] .viewToggle__btn{ padding: 7px 10px; font-size: 9px; }
+html[data-view="mobile"] .viewToggle__menu{ min-width: 86px; }
 
 html[data-view="mobile"] .messageGallery{ grid-template-columns: 1fr; }
 html[data-view="desktop"] .messageGallery{ grid-template-columns: repeat(2, minmax(0, 1fr)); }
@@ -1703,14 +1793,21 @@ html[data-view="mobile"] body{
 }
 html[data-view="mobile"] .sheet{
   width: 100%;
-  padding: 16px;
-  border-radius: 22px;
+  padding: 20px;
+  border-radius: 24px;
+}
+html[data-view="mobile"] .sheet::after{
+  inset: 10px;
+  border-radius: 18px;
 }
 html[data-view="mobile"] .heroMeta{
   flex-direction: column;
   align-items: flex-start;
 }
-html[data-view="mobile"] .sectionHead{ margin-bottom: 14px; }
+html[data-view="mobile"] .sectionHead{
+  margin-bottom: 14px;
+  padding-top: 4px;
+}
 html[data-view="mobile"] .heroActions{ margin-top: 12px; }
 html[data-view="mobile"] .heroHint{ margin-top: 10px; }
 html[data-view="mobile"] .sectionTitle{
@@ -1749,6 +1846,7 @@ html[data-view="mobile"] .cf-card{
 
 html[data-view="mobile"] .grid2{ grid-template-columns: 1fr; }
 html[data-view="desktop"] .grid2{ grid-template-columns: 1fr 1fr; }
+html[data-view="desktop"] .rsvpEmbed{ display:block; }
 
 html[data-view="mobile"] .formEmbed iframe{ height: 640px; }
 html[data-view="desktop"] .formEmbed iframe{ height: 560px; }
