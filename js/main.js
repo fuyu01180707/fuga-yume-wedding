@@ -1,4 +1,4 @@
-﻿/**
+/**
  * ✅ 軽量・安全版（画像が消えない）
  * - 背景は「2レイヤーのクロスフェード」方式（bgA/bgB）
  * - Story背景は Hero + 01 + 02 + 03 のみ使用（04/05は背景に使わない）
@@ -53,6 +53,8 @@ const menuBtn = $("#menuBtn");
 const navOverlay = $("#navOverlay");
 const navClose = $("#navClose");
 const viewToggle = document.querySelector("[data-view-toggle]");
+const viewToggleBtn = viewToggle ? viewToggle.querySelector("[data-view-toggle-btn]") : null;
+const viewToggleMenu = viewToggle ? viewToggle.querySelector("[data-view-toggle-menu]") : null;
 
 let showingA = true;
 let currentKey = null;
@@ -342,6 +344,13 @@ function setupViewToggle(){
   const buttons = Array.from(viewToggle.querySelectorAll("button[data-view]"));
   if(!buttons.length) return;
 
+  const setOpen = (next) => {
+    viewToggle.classList.toggle("is-open", next);
+    if(viewToggleBtn){
+      viewToggleBtn.setAttribute("aria-expanded", next ? "true" : "false");
+    }
+  };
+
   let saved = "auto";
   try{
     saved = localStorage.getItem(VIEW_KEY) || "auto";
@@ -351,9 +360,29 @@ function setupViewToggle(){
   applyViewMode(saved);
 
   buttons.forEach((btn) => {
-    btn.addEventListener("click", () => applyViewMode(btn.dataset.view));
+    btn.addEventListener("click", () => {
+      applyViewMode(btn.dataset.view);
+      setOpen(false);
+    });
   });
+
+  if(viewToggleBtn && viewToggleMenu){
+    viewToggleBtn.addEventListener("click", (e) => {
+      e.stopPropagation();
+      setOpen(!viewToggle.classList.contains("is-open"));
+    });
+
+    document.addEventListener("click", (e) => {
+      if(viewToggle.contains(e.target)) return;
+      setOpen(false);
+    });
+
+    document.addEventListener("keydown", (e) => {
+      if(e.key === "Escape") setOpen(false);
+    });
+  }
 }
+
 /* ================= Coverflow（デザイン1再現） ================= */
 function setupCoverflow(){
   const root = document.querySelector("[data-coverflow]");
