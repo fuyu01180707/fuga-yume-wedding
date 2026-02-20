@@ -60,6 +60,7 @@ let showingA = true;
 let currentKey = null;
 let assetsReady = false;
 let letterOpened = false;
+let scaleRaf = null;
 
 function lerp(a, b, t){ return a + (b - a) * t; }
 
@@ -314,6 +315,28 @@ function setupNav(){
 /* ================= View toggle ================= */
 const VIEW_KEY = "invitationViewMode";
 const VIEW_MODES = ["auto", "desktop", "mobile"];
+const MOBILE_BASE_WIDTH = 390;
+const MOBILE_BASE_SCALE = 0.8;
+const MOBILE_MIN_SCALE = 0.6;
+
+function updateMobileScale(){
+  const view = document.documentElement.getAttribute("data-view");
+  const isMobileView = view === "mobile" || (!view && window.matchMedia("(max-width: 700px)").matches);
+
+  if(!isMobileView){
+    document.documentElement.classList.remove("is-mobile-scale");
+    document.documentElement.style.setProperty("--mobile-scale", "1");
+    return;
+  }
+
+  const width = window.innerWidth || MOBILE_BASE_WIDTH;
+  const rawScale = width / MOBILE_BASE_WIDTH;
+  const scale = rawScale * MOBILE_BASE_SCALE;
+  const clamped = Math.min(1, Math.max(MOBILE_MIN_SCALE, scale));
+
+  document.documentElement.classList.add("is-mobile-scale");
+  document.documentElement.style.setProperty("--mobile-scale", clamped.toFixed(4));
+}
 
 function applyViewMode(mode){
   const safe = VIEW_MODES.includes(mode) ? mode : "auto";
@@ -337,6 +360,8 @@ function applyViewMode(mode){
   }catch(e){
     // ignore storage errors
   }
+
+  updateMobileScale();
 }
 
 function setupViewToggle(){
@@ -534,6 +559,11 @@ function setupCountdown(){
 
   setupNav();
   setupViewToggle();
+  updateMobileScale();
+  window.addEventListener("resize", () => {
+    if(scaleRaf) cancelAnimationFrame(scaleRaf);
+    scaleRaf = requestAnimationFrame(updateMobileScale);
+  });
   setupReveal();
   setupBgSwitch();
   setupCoverflow();
