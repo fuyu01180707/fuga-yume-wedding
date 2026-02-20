@@ -1,3 +1,4 @@
+
 :root{
   --paper: #fbfaf6;
   --paper2:#f3f2ea;
@@ -1249,6 +1250,246 @@ html[data-view="mobile"] .rsvpEmbed{ display:none; }
   line-height:1.9;
 }
 
+/* Schedule */
+.scheduleGrid{
+  display:grid;
+  grid-template-columns: 1fr;
+  gap: 16px;
+  align-items: start;
+}
+
+.scheduleTimeline{
+  list-style:none;
+  margin: 12px 0 0;
+  padding: 0 0 0 34px;
+  position: relative;
+}
+.scheduleTimeline::before{
+  content:"";
+  position:absolute;
+  left:16px;
+  top:8px;
+  bottom:8px;
+  width:2px;
+  border-radius:999px;
+  background: linear-gradient(180deg, rgba(143,172,94,.85), rgba(233,211,137,.6));
+  box-shadow: 0 0 0 3px rgba(143,172,94,.14);
+}
+.scheduleItem{
+  position: relative;
+  display:grid;
+  grid-template-columns: minmax(110px, 140px) 1fr;
+  gap: 12px;
+  padding: 10px 0;
+  align-items: start;
+}
+.scheduleItem::before{
+  content:"";
+  position:absolute;
+  left:-24px;
+  top:18px;
+  width:12px;
+  height:12px;
+  border-radius:50%;
+  background: radial-gradient(circle, rgba(255,255,255,.95), rgba(143,172,94,.85));
+  border: 1px solid rgba(46,61,27,.20);
+  box-shadow: 0 0 0 6px rgba(143,172,94,.16);
+}
+.scheduleTime{
+  font-size: 12px;
+  font-weight: 700;
+  letter-spacing: .08em;
+  color: rgba(18,26,12,.72);
+  font-variant-numeric: tabular-nums;
+  text-align: right;
+  padding-right: 6px;
+  position: relative;
+}
+.scheduleTime::after{
+  content:"";
+  display:block;
+  margin-top: 6px;
+  margin-left:auto;
+  width: 36px;
+  height: 2px;
+  border-radius: 999px;
+  background: linear-gradient(90deg, rgba(143,172,94,.85), rgba(233,211,137,.65));
+  opacity:.7;
+}
+.scheduleTitle{
+  font-weight: 800;
+  letter-spacing: .08em;
+}
+.scheduleDesc{
+  margin: 4px 0 0;
+  font-size: 13px;
+  line-height: 1.65;
+  color: rgba(18,26,12,.68);
+}
+.scheduleNote{
+  margin: 12px 0 0;
+  font-size: 12px;
+  color: rgba(18,26,12,.62);
+  line-height: 1.8;
+}
+@media (max-width: 700px){
+  .scheduleTimeline{ padding-left: 28px; }
+  .scheduleTimeline::before{ left:12px; }
+  .scheduleItem{
+    grid-template-columns: 1fr;
+    gap: 6px;
+  }
+  .scheduleItem::before{ left:-20px; top:16px; }
+  .scheduleTime{
+    text-align:left;
+    padding-right: 0;
+  }
+  .scheduleTime::after{
+    margin-left: 0;
+  }
+}
+
+.countdownCard{
+  position: relative;
+  overflow: hidden;
+}
+.countdownCard > .countdownFx{
+  position:absolute;
+  inset:0;
+  z-index:0;
+  pointer-events:none;
+}
+.countdownCard > .countdownFx::before{
+  content:"";
+  position:absolute;
+  inset:-20% -10% auto;
+  height: 60%;
+  background:
+    radial-gradient(220px 140px at 15% 20%, rgba(247,195,208,.45), transparent 60%),
+    radial-gradient(260px 160px at 85% 10%, rgba(183,221,207,.40), transparent 62%);
+  opacity:.75;
+  animation: countdownGlow 8s ease-in-out infinite;
+}
+.countdownCard > .countdownFx::after{
+  content:"";
+  position:absolute;
+  width: 320px;
+  height: 320px;
+  right:-140px;
+  bottom:-160px;
+  background: radial-gradient(circle, rgba(233,211,137,.35), transparent 62%);
+  opacity:.55;
+  animation: countdownFloat 12s ease-in-out infinite;
+}
+.countdownHead{
+  display:flex;
+  align-items:flex-start;
+  justify-content:space-between;
+  gap: 10px;
+  margin-bottom: 12px;
+}
+.countdownHeadLeft{
+  display:flex;
+  flex-direction:column;
+  gap: 4px;
+}
+.countdownLabel{
+  font-size: 11px;
+  letter-spacing: .28em;
+  text-transform: uppercase;
+  color: rgba(18,26,12,.60);
+  font-weight: 700;
+}
+.countdownDate{
+  font-weight: 800;
+  letter-spacing: .12em;
+  font-size: 14px;
+  color: rgba(18,26,12,.82);
+}
+.countdownUnits{
+  display:grid;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  gap: 10px;
+}
+.countdownUnit{
+  position: relative;
+  padding: 12px 10px;
+  border-radius: 16px;
+  background: rgba(255,255,255,.78);
+  border: 1px solid rgba(46,61,27,.12);
+  box-shadow: 0 12px 26px rgba(10,12,10,.10);
+  text-align:center;
+  overflow:hidden;
+  min-width: 0;
+}
+.countdownUnit::after{
+  content:"";
+  position:absolute;
+  inset:-80% -40%;
+  background: linear-gradient(120deg, transparent 35%, rgba(255,255,255,.65) 50%, transparent 70%);
+  transform: translateX(-60%);
+  opacity:.65;
+  animation: countdownShimmer 4.5s ease-in-out infinite;
+}
+.countdownNum{
+  display:block;
+  font-size: 28px;
+  font-weight: 800;
+  letter-spacing: .12em;
+  font-variant-numeric: tabular-nums;
+  transition: transform .35s ease, filter .35s ease;
+}
+.countdownNum.is-tick{
+  animation: countdownTick .45s ease;
+}
+.countdownUnitLabel{
+  margin-top: 4px;
+  font-size: 10px;
+  letter-spacing: .12em;
+  color: rgba(18,26,12,.58);
+}
+.countdownNote{
+  margin: 0;
+  font-size: 11px;
+  color: rgba(18,26,12,.60);
+  letter-spacing: .14em;
+}
+
+@media (max-width: 700px){
+  .countdownHead{ margin-bottom: 10px; }
+  .countdownLabel{ font-size: 10px; letter-spacing: .22em; }
+  .countdownDate{ font-size: 12px; letter-spacing: .08em; }
+  .countdownNote{ font-size: 10px; letter-spacing: .12em; }
+  .countdownUnits{ gap: 6px; }
+  .countdownUnit{
+    padding: 10px 6px;
+    border-radius: 12px;
+    box-shadow: 0 8px 18px rgba(10,12,10,.08);
+  }
+  .countdownNum{ font-size: 22px; letter-spacing: .06em; }
+  .countdownUnitLabel{ font-size: 9px; letter-spacing: .08em; }
+  .simpleGrid .countdownCard{ padding: 14px; }
+}
+
+@keyframes countdownGlow{
+  0%,100%{ transform: translateY(0); opacity:.75; }
+  50%{ transform: translateY(6px); opacity:.92; }
+}
+@keyframes countdownFloat{
+  0%,100%{ transform: translate3d(0,0,0); }
+  50%{ transform: translate3d(-10px,-8px,0); }
+}
+@keyframes countdownShimmer{
+  0%{ transform: translateX(-70%); }
+  60%{ transform: translateX(70%); }
+  100%{ transform: translateX(70%); }
+}
+@keyframes countdownTick{
+  0%{ transform: translateY(0); filter: blur(0); }
+  40%{ transform: translateY(-6px); filter: blur(0.4px); }
+  100%{ transform: translateY(0); filter: blur(0); }
+}
+
 .venue{ color: rgba(18,26,12,.74); line-height:1.75; }
 
 .subhead{
@@ -1848,6 +2089,33 @@ html[data-view="mobile"] .grid2{ grid-template-columns: 1fr; }
 html[data-view="desktop"] .grid2{ grid-template-columns: 1fr 1fr; }
 html[data-view="desktop"] .rsvpEmbed{ display:block; }
 
+html[data-view="mobile"] .scheduleTimeline{ padding-left: 28px; }
+html[data-view="mobile"] .scheduleTimeline::before{ left:12px; }
+html[data-view="mobile"] .scheduleItem{ grid-template-columns: 1fr; gap: 6px; }
+html[data-view="mobile"] .scheduleItem::before{ left:-20px; top:16px; }
+html[data-view="mobile"] .scheduleTime{ text-align:left; padding-right: 0; }
+html[data-view="mobile"] .scheduleTime::after{ margin-left: 0; }
+html[data-view="desktop"] .scheduleTimeline{ padding-left: 34px; }
+html[data-view="desktop"] .scheduleTimeline::before{ left:16px; }
+html[data-view="desktop"] .scheduleItem{ grid-template-columns: minmax(110px, 140px) 1fr; gap: 12px; }
+html[data-view="desktop"] .scheduleItem::before{ left:-24px; top:18px; }
+html[data-view="desktop"] .scheduleTime{ text-align:right; padding-right: 6px; }
+html[data-view="desktop"] .scheduleTime::after{ margin-left: auto; }
+
+html[data-view="mobile"] .countdownHead{ margin-bottom: 10px; }
+html[data-view="mobile"] .countdownLabel{ font-size: 10px; letter-spacing: .22em; }
+html[data-view="mobile"] .countdownDate{ font-size: 12px; letter-spacing: .08em; }
+html[data-view="mobile"] .countdownNote{ font-size: 10px; letter-spacing: .12em; }
+html[data-view="mobile"] .countdownUnits{ gap: 6px; }
+html[data-view="mobile"] .countdownUnit{
+  padding: 10px 6px;
+  border-radius: 12px;
+  box-shadow: 0 8px 18px rgba(10,12,10,.08);
+}
+html[data-view="mobile"] .countdownNum{ font-size: 22px; letter-spacing: .06em; }
+html[data-view="mobile"] .countdownUnitLabel{ font-size: 9px; letter-spacing: .08em; }
+html[data-view="mobile"] .simpleGrid .countdownCard{ padding: 14px; }
+
 html[data-view="mobile"] .formEmbed iframe{ height: 640px; }
 html[data-view="desktop"] .formEmbed iframe{ height: 560px; }
 
@@ -1919,8 +2187,13 @@ html[data-view="desktop"] .cf-card.is-next{
   .btnRsvp::after,
   .envelope__flap,
   .letterPaper,
-  .seal{ transition:none !important; }
+  .seal,
+  .countdownNum{ transition:none !important; }
   .seal{ animation:none !important; }
+  .countdownFx::before,
+  .countdownFx::after,
+  .countdownUnit::after,
+  .countdownNum.is-tick{ animation:none !important; }
   .reveal{ opacity:1; transform:none; }
   .grain{ display:none !important; }
   .curzr-ring-dot{ display:none !important; }
