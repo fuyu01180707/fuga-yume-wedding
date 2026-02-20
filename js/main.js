@@ -318,6 +318,8 @@ const VIEW_MODES = ["auto", "desktop", "mobile"];
 const MOBILE_BASE_WIDTH = 390;
 const MOBILE_BASE_SCALE = 0.8;
 const MOBILE_MIN_SCALE = 0.6;
+const MOBILE_TINY_WIDTH = 360;
+const MOBILE_TINY_SCALE = 0.92;
 
 function updateMobileScale(){
   const view = document.documentElement.getAttribute("data-view");
@@ -331,7 +333,8 @@ function updateMobileScale(){
 
   const width = window.innerWidth || MOBILE_BASE_WIDTH;
   const rawScale = width / MOBILE_BASE_WIDTH;
-  const scale = rawScale * MOBILE_BASE_SCALE;
+  const extraScale = width <= MOBILE_TINY_WIDTH ? MOBILE_TINY_SCALE : 1;
+  const scale = rawScale * MOBILE_BASE_SCALE * extraScale;
   const clamped = Math.min(1, Math.max(MOBILE_MIN_SCALE, scale));
 
   document.documentElement.classList.add("is-mobile-scale");
