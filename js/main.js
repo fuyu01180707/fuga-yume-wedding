@@ -14,7 +14,7 @@ const BG = [
   "./assets/images/story/02.jpg",     // 2
   "./assets/images/story/03.jpg",     // 3
   "./assets/images/背景/背景4.png",      // 4 (Gallery background)
-  "./assets/images/背景/背景5.png",      // 5 (Details background)
+  "./assets/images/背景/背景5.png",      // 5 (Schedule background)
   "./assets/images/背景/背景6.png",      // 6 (Access background)
   "./assets/images/背景/背景7.png",      // 7 (FAQ background)
 ];
@@ -465,6 +465,68 @@ function setupImgFallback(){
   });
 }
 
+/* ================= Countdown ================= */
+function setupCountdown(){
+  const roots = $$(".countdownCard[data-countdown]");
+  if(!roots.length) return;
+
+  roots.forEach((root) => {
+    const targetRaw = root.getAttribute("data-target");
+    if(!targetRaw) return;
+
+    const target = new Date(targetRaw);
+    if(Number.isNaN(target.getTime())) return;
+
+    const parts = {
+      days: root.querySelector("[data-countdown-value='days']"),
+      hours: root.querySelector("[data-countdown-value='hours']"),
+      mins: root.querySelector("[data-countdown-value='mins']"),
+      secs: root.querySelector("[data-countdown-value='secs']"),
+    };
+
+    const last = {};
+
+    const format = (key, value) => {
+      if(key === "days") return String(value);
+      return String(value).padStart(2, "0");
+    };
+
+    const tick = () => {
+      const now = new Date();
+      let diff = target.getTime() - now.getTime();
+      if(diff < 0) diff = 0;
+
+      const total = Math.floor(diff / 1000);
+      const days = Math.floor(total / 86400);
+      const hours = Math.floor((total % 86400) / 3600);
+      const mins = Math.floor((total % 3600) / 60);
+      const secs = total % 60;
+
+      const values = { days, hours, mins, secs };
+      Object.keys(values).forEach((key) => {
+        const el = parts[key];
+        if(!el) return;
+        const next = format(key, values[key]);
+        if(last[key] === next) return;
+        last[key] = next;
+        el.textContent = next;
+        if(!prefersReduced){
+          el.classList.remove("is-tick");
+          void el.offsetWidth;
+          el.classList.add("is-tick");
+        }
+      });
+
+      if(diff === 0){
+        root.classList.add("is-done");
+      }
+    };
+
+    tick();
+    setInterval(tick, 1000);
+  });
+}
+
 /* ================= Boot ================= */
 (async function boot(){
   // ✅ 初期背景（Hero）を必ずセット
@@ -476,6 +538,7 @@ function setupImgFallback(){
   setupBgSwitch();
   setupCoverflow();
   setupImgFallback();
+  setupCountdown();
   setupLetterLoader();
 
   // grain は重い端末もあるので、減速環境はOFFにできるように
@@ -486,4 +549,3 @@ function setupImgFallback(){
 
   await preloadAssets();
 })();
-
