@@ -694,6 +694,47 @@ body{
   .viewToggle__menu{ min-width: 86px; }
 }
 
+/* Language toggle */
+.langToggle{
+  pointer-events:auto;
+  display:flex;
+  gap:6px;
+  padding:4px;
+  border-radius:999px;
+  background: rgba(255,255,255,.78);
+  border:1px solid rgba(46,61,27,.18);
+  box-shadow: 0 12px 36px rgba(10,12,10,.12);
+  backdrop-filter: blur(10px);
+}
+.langToggle button{
+  border: 0;
+  padding: 6px 8px;
+  border-radius: 999px;
+  background: transparent;
+  color: var(--muted);
+  font-size: 9px;
+  letter-spacing: .18em;
+  text-transform: uppercase;
+  font-weight: 700;
+  cursor: pointer;
+  font-family: "Noto Sans JP","Hiragino Sans","Segoe UI",sans-serif;
+  transition: transform .2s ease, color .2s ease, background .2s ease, box-shadow .2s ease;
+}
+.langToggle button.is-active,
+.langToggle button[aria-pressed="true"]{
+  background: rgba(143,172,94,.18);
+  color: var(--ink);
+  box-shadow: 0 6px 16px rgba(10,12,10,.12);
+}
+.langToggle button:hover,
+.langToggle button:focus-visible{
+  transform: translateY(-1px);
+}
+@media (max-width:700px){
+  .langToggle{ padding: 3px; }
+  .langToggle button{ padding: 5px 7px; font-size: 8px; }
+}
+
 /* ========= NavOverlay ========= */
 .navOverlay{
   position:fixed; inset:0;
@@ -2042,6 +2083,8 @@ html[data-view="mobile"] .brand__logo{ height: 56px; }
 html[data-view="desktop"] .brand__logo{ height: 66px; }
 html[data-view="mobile"] .viewToggle__btn{ padding: 7px 10px; font-size: 9px; }
 html[data-view="mobile"] .viewToggle__menu{ min-width: 86px; }
+html[data-view="mobile"] .langToggle{ padding: 3px; }
+html[data-view="mobile"] .langToggle button{ padding: 5px 7px; font-size: 8px; }
 
 html[data-view="mobile"] .messageGallery{ grid-template-columns: 1fr; }
 html[data-view="desktop"] .messageGallery{ grid-template-columns: repeat(2, minmax(0, 1fr)); }
